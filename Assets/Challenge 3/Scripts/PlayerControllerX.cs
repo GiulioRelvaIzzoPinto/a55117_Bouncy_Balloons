@@ -10,6 +10,8 @@ public class PlayerControllerX : MonoBehaviour
     private float gravityModifier = 1.5f;
     private Rigidbody playerRb;
 
+    public bool lowEnough;
+
     public ParticleSystem explosionParticle;
     public ParticleSystem fireworksParticle;
 
@@ -37,6 +39,15 @@ public class PlayerControllerX : MonoBehaviour
         {
             playerRb.AddForce(Vector3.up * floatForce);
         }
+         if (transform.position.y > 13) 
+        {
+            lowEnough = false;
+        } 
+        else 
+        {
+            lowEnough = true;
+        }
+
     }
 
     private void OnCollisionEnter(Collision other)
