@@ -10,7 +10,7 @@ public class PlayerControllerX : MonoBehaviour
     private float gravityModifier = 1.5f;
     private Rigidbody playerRb;
 
-    public bool lowEnough;
+    public bool isLowEnough;
 
     public ParticleSystem explosionParticle;
     public ParticleSystem fireworksParticle;
@@ -18,7 +18,6 @@ public class PlayerControllerX : MonoBehaviour
     private AudioSource playerAudio;
     public AudioClip moneySound;
     public AudioClip explodeSound;
-
     public AudioClip bounceSound;
 
 
@@ -37,17 +36,17 @@ public class PlayerControllerX : MonoBehaviour
     void Update()
     {
         // While space is pressed and player is low enough, float up
-        if (Input.GetKey(KeyCode.Space) && lowEnough && !gameOver)
+        if (Input.GetKey(KeyCode.Space) && isLowEnough && !gameOver)
         {
             playerRb.AddForce(Vector3.up * floatForce);
         }
          if (transform.position.y > 13) 
         {
-            lowEnough = false;
+            isLowEnough = false;
         } 
         else 
         {
-            lowEnough = true;
+            isLowEnough = true;
         }
 
     }
